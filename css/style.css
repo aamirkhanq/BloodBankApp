@@ -1,0 +1,99 @@
+.header-row {
+	background-color: #1A237E !important;
+	  
+}
+
+.login-logout-button {
+	background-color: orange;
+	color: white;
+	max-width: 30%;
+    max-height: 50%;
+    margin-top: 23px;
+    text-align: center;
+}
+
+.table {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.heading {
+	width: 100%;
+	text-align: center;
+}
+
+.form {
+	text-align: center;
+	width: 100%;
+}
+
+.form table {
+	position: relative;;
+	left: 20%;
+	right: 20%;
+}
+
+table {
+	width: 100%;
+}
+
+td {
+    height: 50px;
+    vertical-align: bottom;
+    text-align: left;
+    padding: 25px;
+}
+
+.table td {
+	border-bottom: 1px solid #ddd;
+}
+.table tr:nth-child(even) {background-color: #f2f2f2;}
+
+.table tr:hover {background-color: #ffae19;}
+
+input[type=text], input[type=password], input[type=submit], select {
+    background-color: #f2f2f2;
+    border: 3px solid #555;
+    border-radius: 4px;
+}
+
+input[type=submit] {
+    background-color: 1A237E;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.links {
+	position: relative;
+	width: 100%;
+	line-height: 1000%;
+}
+
+#hospital {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	color: white;
+	background-color: #1A237E;
+	left: 20%;
+	text-align: center;
+}
+
+#receiver {
+	position: absolute;
+	width: 150px;
+	height: 150px;	
+	color: white;
+	background-color: #1A237E;
+	right: 20%;
+	text-align: center;
+
+}
+
+.errorText {
+	color: red;
+}
