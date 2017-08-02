@@ -28,7 +28,9 @@ include("inc/header.php");
 			//Replace any occurence of white space by an underscore
 			$blood_group = preg_replace('/\s+/', '_', $blood_group);
 
-			$link = "<a href=requests.php?p=$hospital_name&q=$blood_group>Request Sample</a>";
+			$hospital_id = $item["hospital_id"];
+
+			$link = "<a href=requests.php?p=$hospital_name&q=$blood_group&r=$hospital_id>Request Sample</a>";
 			echo "<tr><td>" 
 			     . $item["hospital_name"] 
 			     . "</td>"

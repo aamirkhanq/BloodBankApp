@@ -5,12 +5,23 @@ include("inc/header.php");
 include("inc/connection.php");
 include("inc/functions.php");
 
-$err = LoginHandler($db);
+$err = array(
+		"username" => "",
+		"password" => ""
+	);
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
-	$err = LoginHandler($db);
+	$err = LoginHandler($db, $_POST["category"]);
 	if ($err["username"]=="" && $err["password"]==""){
 		set_cookie($db, $_POST["username"], $_POST["category"]);
 		header("location:index.php");
+	}
+}
+if ($_SERVER["REQUEST_METHOD"]=="GET"){
+	if (array_key_exists("category", $_COOKIE)){
+		if ($_COOKIE["category"]=="Hospital") {
+			echo "<a href=''>Add Blood Info</a>";
+			echo "<a href=''>View Requests</a>";
+		}
 	}
 }
 ?>
@@ -37,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 				</tr>
 				<tr>
 					<th>
-						<label for="cat">Blood Group</label>
+						<label for="cat">Member Type</label>
 					</th>
 					<td>
 						<select name="category" id="cat">
