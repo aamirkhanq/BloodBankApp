@@ -30,10 +30,15 @@ CREATE TABLE `blood_groups` (
   FOREIGN KEY (hospital_id) REFERENCES hospitals (id)
 );
 
-CREATE VIEW requests as
-SELECT blood_groups.hospital_id as hospital_id, receivers.blood_group as blood_group, receivers.name as name, receivers.id as id
-FROM blood_groups JOIN receivers
-ON blood_groups.name = receivers.blood_group;
+DROP TABLE IF EXISTS `requests`;
+CREATE TABLE `requests` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `sample` varchar(100) NOT NULL,
+  `hospital_id` int(11) NOT NULL,
+  FOREIGN KEY (hospital_id) REFERENCES hospitals (id)
+);
 
 CREATE VIEW available_groups as
 SELECT hospitals.id as hospital_id, blood_groups.name as blood_group, hospitals.name as hospital_name
@@ -49,16 +54,16 @@ INSERT INTO hospitals (name, username, password, category) VALUES ('Capital Hosp
 INSERT INTO hospitals (name, username, password, category) VALUES ('J&M Hospital', 'jnmhospital', 'jnmhospital', 'hospital');
 INSERT INTO hospitals (name, username, password, category) VALUES ('Jaypee Hospital', 'jaypeehospital', 'jaypeehospital', 'hospital');
 
-INSERT INTO blood_groups (name, hospital_id) VALUES ('B+', 1);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('B-', 2);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('AB+', 3);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('AB-', 4);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('O+', 5);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('O-', 6);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('A1+', 7);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('A1-', 8);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('A1B+', 1);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('A1B-', 2);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('A2+', 3);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('A2-', 4);
-INSERT INTO blood_groups (name, hospital_id) VALUES ('A2B-', 5);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('B +ve', 1);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('B -ve', 2);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('AB +ve', 3);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('AB -ve', 4);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('O +ve', 5);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('O -ve', 6);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('A1 +ve', 7);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('A1 -ve', 8);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('A1B +ve', 1);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('A1B -ve', 2);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('A2 +ve', 3);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('A2 -ve', 4);
+INSERT INTO blood_groups (name, hospital_id) VALUES ('A2B -ve', 5);

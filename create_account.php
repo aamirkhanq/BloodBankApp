@@ -11,21 +11,42 @@ $err = array(
 	"password" => "",
 	"name" => ""
 );
+$cat = "";
+if (isset($_GET)){
+	if (array_key_exists("q", $_GET)) {
+		//var_dump($_GET["q"]);
+		//die();
+		$cat = $_GET["q"];
+	}
+}
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
+	// var_dump("Inside post");
 	if (array_key_exists("bloodgroup", $_POST)) {
 		$err=create_account($db, $_POST["name"], $_POST["username"], $_POST["password"], $_POST["bloodgroup"], "Receiver");
+		$cat = "receivers";
+		//var_dump($cat);
+		//var_dump($_POST);
+		//var_dump($err);
+		//die();
 	} else {
 		$err=create_account($db, $_POST["name"], $_POST["username"], $_POST["password"], "", "Hospital");
+		$cat = "hospitals";
+		//var_dump($err);
+		//die();
 	}
 	if ($err["username"]=="" && $err["password"]=="" && $err["name"]==""){
 		header("location:index.php");
-	} else {
-		header("location:create_account.php?q=".strtolower($_POST[category]));
-	}
+	} /*else {
+		//var_dump("location:create_account.php?q=" . $cat);
+		//die();
+		header("location:create_account.php?q=" . $cat);
+	}*/
 }
 
+//var_dump($cat);
 if (isset($_GET)) {
-	if ($_GET["q"]=="hospitals") {
+	if ($cat == "hospitals") { 
+		//if ($_GET["q"]=="hospitals") {
 ?>
 	<div class="form">
 		<form method="post" action="create_account.php">
@@ -62,7 +83,8 @@ if (isset($_GET)) {
 		</form>
 	</div>
 <?php 
-	} elseif ($_GET["q"]=="receivers") {
+	} elseif ($cat == "receivers") { 
+		//if ($_GET["q"]=="receivers") {
 ?>
 	<div class="form">
 		<form method="post" action="create_account.php">
@@ -73,6 +95,7 @@ if (isset($_GET)) {
 					</th>
 					<td>
 						<input type="text" id="name" name="name">
+						<small class="errorText"><?php echo $err["name"]; ?></small>
 					</td>
 				</tr>
 				<tr>
@@ -81,6 +104,7 @@ if (isset($_GET)) {
 					</th>
 					<td>
 						<input type="text" id="username" name="username">
+						<small class="errorText"><?php echo $err["username"]; ?></small>
 					</td>
 				</tr>
 				<tr>
@@ -89,6 +113,7 @@ if (isset($_GET)) {
 					</th>
 					<td>
 						<input type="password" id="password" name="password">
+						<small class="errorText"><?php echo $err["password"]; ?></small>
 					</td>
 				</tr>
 				<tr>

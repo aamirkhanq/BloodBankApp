@@ -76,12 +76,16 @@ function create_account($db, $name, $username, $password, $blood_group, $categor
 	$table_name = strtolower($category)."s";
 	if ($name == "") {
 		$error["name"] = "This field cannot be empty";
-	} elseif ($username == "") {
+	} 
+	if ($username == "") {
 		$error["username"] = "This field cannot be empty";
-	} elseif ($password == "") {
+	} 
+	if ($password == "") {
 		$error["password"] = "This field cannot be empty";
-	} else {
-		var_dump($category);
+	}
+	// else {
+	//	var_dump($category);
+	if($error["name"] == "" && $error["username"] == "" && $error["password"] == "") {
 		if ($category == "Hospital") {
 			// var_dump("check_availability:");
 			// var_dump(check_availability($db, $username, $category));

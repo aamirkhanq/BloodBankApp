@@ -70,7 +70,7 @@ input[type=submit] {
 .links {
 	position: relative;
 	width: 100%;
-	line-height: 1000%;
+	line-height: 100%;
 }
 
 #hospital {
@@ -96,4 +96,9 @@ input[type=submit] {
 
 .errorText {
 	color: red;
+}
+
+.hospital-links {
+	//display: block;
+	text-align: center;
 }

@@ -16,14 +16,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 		header("location:index.php");
 	}
 }
-if ($_SERVER["REQUEST_METHOD"]=="GET"){
-	if (array_key_exists("category", $_COOKIE)){
-		if ($_COOKIE["category"]=="Hospital") {
-			echo "<a href=''>Add Blood Info</a>";
-			echo "<a href=''>View Requests</a>";
-		}
-	}
-}
 ?>
 	<div class="form">
 		<form method="post">
